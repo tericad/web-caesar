@@ -3,21 +3,6 @@ from flask import Flask, request
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-page_header = """
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>FlickList</title>
-    </head>
-    <body>
-        <h1>FlickList</h1>
-"""
-
-page_footer = """
-    </body>
-</html>
-"""
-
 form = """
 <!DOCTYPE html>
 
@@ -41,17 +26,20 @@ form = """
     </head>
     <body>
       <form method=['POST']>
-        <label for="rot">Rotate by
+        <label for="rot">Rotate by:
             <input type="text" name="rot" value="0"/>
         </label>
-            <input type=textarea name="text"/>
+        <br>
+            <textarea name="text"></textarea>
+        <br>
         <input type="submit" />
+      </form>
     </body>
 </html>
 """
 
 @app.route("/")
 def index():
-    return page_header + form + page_footer
+    return form
 
 app.run()
