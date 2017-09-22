@@ -26,7 +26,7 @@ form = """
         </style>
     </head>
     <body>
-      <form method=['POST']>
+      <form action='/new' method="post">
         <label for="rot">Rotate by:
             <input type="text" name="rot" value="0"/>
         </label>
@@ -44,11 +44,13 @@ def index():
     return form
 
 
-@app.route("/", methods=['POST'])
+@app.route("/new", methods=['POST'])
 def encrypt():
-    rot = int(request.form['rot'])
+    rot = request.form['rot']
+    rot = int(rot)
     text = request.form['text']
-    return <h1>rotate_string(text, rot)</h1>
+    newtext = rotate_string(text, rot)
+    return '<h1>' + newtext + '</h1>'
 
 
 app.run()
